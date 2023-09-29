@@ -16,6 +16,7 @@ def post_distancia(dado: float):
         Uma mensagem de sucesso.
     """
     try:
+        global dadoA
         dadoA = dado
     except:
         return {401:'Bad Request'}
