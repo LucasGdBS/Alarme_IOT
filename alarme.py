@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-dado = 0
+dadoA = 0
 
 @app.post('/postdistancia')
 def post_distancia(dado: float):
@@ -16,7 +16,7 @@ def post_distancia(dado: float):
         Uma mensagem de sucesso.
     """
     try:
-        dado = 0
+        dadoA = dado
     except:
         return {401:'Bad Request'}
     else:
@@ -34,6 +34,6 @@ def get_distancia():
         Uma mensagem de sucesso.
     """
     try:
-        return {"Sucesso": dado}
+        return {"Sucesso": dadoA}
     except:
         return {401:'Bad Request'}
