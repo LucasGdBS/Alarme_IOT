@@ -4,8 +4,8 @@ app = FastAPI()
 
 dadoA = 0
 
-@app.post('/postdistancia')
-def post_distancia(dado: str):
+@app.post('/postdistancia/')
+async def post_distancia(dado: float):
     """
     Envia a distância do objeto detectado pelo sensor ultrassom.
 
@@ -17,7 +17,7 @@ def post_distancia(dado: str):
     """
     try:
         global dadoA
-        dadoA = int(dado)
+        dadoA = dado
     except:
         return {401:'Bad Request'}
     else:
