@@ -1,11 +1,17 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+
+
+class Dado(BaseModel):
+    dado: float
+
 
 app = FastAPI()
 
-dadoA = 0
+dadoA:Dado = {"dado": 0}
 
 @app.post('/postdistancia/')
-async def post_distancia(dado: float):
+async def post_distancia(dado: Dado):
     """
     Envia a distância do objeto detectado pelo sensor ultrassom.
 
@@ -23,7 +29,7 @@ async def post_distancia(dado: float):
     else:
         return {200:'OK'}
 
-@app.get('/getdistancia')
+@app.get('/getdistancia/')
 async def get_distancia():
     """
     Obtem a distância do objeto detectado pelo sensor ultrassom.
@@ -35,7 +41,7 @@ async def get_distancia():
         Uma mensagem de sucesso.
     """
     try:
-        return {"Sucesso": dadoA}
+        return dadoA
     except:
         return {401:'Bad Request'}
 
