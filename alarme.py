@@ -24,7 +24,7 @@ async def post_distancia(dado: float):
         return {200:'OK'}
 
 @app.get('/getdistancia')
-def get_distancia():
+async def get_distancia():
     """
     Obtem a distância do objeto detectado pelo sensor ultrassom.
 
@@ -38,3 +38,10 @@ def get_distancia():
         return {"Sucesso": dadoA}
     except:
         return {401:'Bad Request'}
+
+@app.get('/')
+async def home():
+    """
+    Apenas a pagina inicial da API
+    """
+    return {'Bem-Vindo à ': 'AlarmeAPI'}
